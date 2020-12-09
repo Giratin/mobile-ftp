@@ -1,0 +1,59 @@
+<%- include('../template/header')-%>
+
+<div class="container-fluid mt-3">
+    <div class="flex">
+        <div class="spacer"></div>
+        <div class="mr-3">
+            <button onclick="displayForm()" id="btnCreate" class="btn btn-info"> Create New File </button>
+        </div>
+    </div>
+    <div id="alert"></div>
+    <div style="display: none;" id="createForm">
+        <div class="row my-4 justify-content-center">
+            <div class="col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" onkeyup="javascript:$('#emptyTitle').html(``)" required name="Title"
+                            placeholder="Title" class="form-control" id="Title">
+                        <div id="emptyTitle"></div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" style="display: none;" name="file" id="file" onchange="fileChange(event)">
+                        <div class="flex">
+                            <input type="button" onclick="javascript:$('#file').click()"
+                                class="btn btn-outline-secondary" value="Choose a file">
+                            <div class="spacer"></div>
+                            <div id="choosedFile"></div>
+                        </div>
+                        <div id="emptyFile"></div>
+                    </div>
+                    <div id="message"></div>
+                    <input type="button" value="Save" onclick="uploadFile()" id="btnUpload"
+                        class="btn btn-success btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <table class="table">
+            <thead>
+                <th> Title </th>
+                <th>Size (bites)</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                      <td><%= data[i].title %></td>
+                      <td><%= data[i].size %></td>
+                      <td> <a class="btn btn-danger" onclick="deleteFile(`<%= data[i]._id %>`)"> Delete </a> </td>
+                    </tr>
+                 <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<%- include('../template/footer')-%>

@@ -1,0 +1,26 @@
+<%- include('../template/header')-%>
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5 col-sm-8">
+            <h2 class="h2 text-center my-5" > Login </h2>
+            <fieldset>
+                <form>
+                    <div class="mb-3">
+                        <input type="email" name="email" autofocus onkeyup="emailTyping()" id="email" class="form-control" placeholder="Email">
+                        <div id="emptyEmail" class="mt-2"></div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="password" onkeyup="passwordTyping()" id="password" class="form-control" placeholder="password">
+                        <div id="emptyPassword" class="mt-2"></div>
+                    </div>
+                    <div class="mb-3" id="message"></div>
+                    <input type="button" onclick="login()" id="btnLogin" disabled="true" value="Login" class="btn btn-block btn-sm btn-primary" >
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../template/footer')-%>

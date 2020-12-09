@@ -1,0 +1,25 @@
+<%- include('../template/header')-%>
+<div class="container">
+   <div class="row">
+       <div class="col-md-12">
+        <table class="table table-responsive-sm">
+            <thead>
+                <th> Title </th>
+                <th>Size (Bytes)</th>
+                <th>Download</th>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                      <td><%= data[i].title %></td>
+                      <td><%= data[i].size  %></td>
+                      <td> <a class="btn btn-success" href="/users/download/<%= data[i]._id %>"> Download </a> </td>
+                    </tr>
+                 <% } %>
+            </tbody>
+        </table>
+       </div>
+   </div>
+</div>
+
+<%- include('../template/footer')-%>
